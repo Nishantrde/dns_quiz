@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}
+<title>r1</title>
+{% endblock %}
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">    
+{% endblock %}
+
+{% block body %}
+<body>
+    <div class="container">
+        
+         
+         <div class="terminal-box">
+            
+            <h1 id="title2"></h1>
+            <div class="text-center upload-btn">
+                <form action="r1">
+                <input type="hidden" name="id" value="{{id}}">
+                <input type="text" name="score" value="">
+                
+                <button class="btn btn-success">NEXT</button>
+            </div>
+            
+        </div>
+        </form>
+            
+     </div>
+</body>
+{% endblock %}
+
+{% block js %}
+
+<script>
+// Typing effect
+const text1 = "{{ quest }}";
+
+let i = 0;
+const speed = 100; // Typing speed in milliseconds
+
+function typeWriter1() {
+    if (i < text1.length) {
+        document.getElementById("title2").innerHTML += text1.charAt(i);
+        i++;
+        setTimeout(typeWriter1, speed);
+    }
+}
+
+document.body.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        document.querySelector('.btn-success').click(); // Programmatically click the button
+    } else if (event.key === 'ArrowLeft') {
+        score = '0'; // Set score to 0 when left arrow key is pressed
+    } else if (event.key === 'ArrowRight') {
+        score = '1'; // Set score to 1 when right arrow key is pressed
+    }
+    // Update the hidden input value
+    document.querySelector('input[name="score"]').value = score;
+});
+
+
+typeWriter1();
+
+
+</script>
+{% endblock %}
+
+
