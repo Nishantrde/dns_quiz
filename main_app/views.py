@@ -22,10 +22,10 @@ def r1(request):
         team = Team.objects.all()
         ques = quest.quests.all()[id]
         return render(request, "r1.html", {"quest": ques, "id" : id,
-                                           "t1" : team[0].score,
-                                           "t2" : team[1].score,
-                                           "t3" : team[2].score,
-                                           "t4" : team[3].score})
+                                           "t1" : Team.objects.get(team_id = 0).score,
+                                           "t2" : Team.objects.get(team_id = 1).score,
+                                           "t3" : Team.objects.get(team_id = 2).score,
+                                           "t4" : Team.objects.get(team_id = 3).score})
 
 def r1_ans(request):
     id = int(request.POST.get("id"))
